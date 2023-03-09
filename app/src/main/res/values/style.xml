@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="App" parent="Theme.MaterialComponents.Light">
+        <item name="android:background">@color/light_back</item>
+    </style>
+
+    <style name="Item" parent="Theme.MaterialComponents.Light">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+
+    <style name="CardView" parent="Theme.MaterialComponents.Light">
+        <item name="android:backgroundTint">@color/cardview_light_background</item>
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="App" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:background">@color/black</item>
+    </style>
+
+    <style name="Item" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:backgroundTint">@color/noteItem_background</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+
+    <style name="ButtonCorners" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:radius">@dimen/delete_buttons_radius</item>
+    </style>
+
+    <style name="CardView" parent="Theme.MaterialComponents.DayNight">
+        <item name="android:backgroundTint">@color/noteItem_background</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+
+</resources>

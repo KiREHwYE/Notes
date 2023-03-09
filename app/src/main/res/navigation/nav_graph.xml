@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/noteListFragment">
+
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="com.example.notes.NoteListFragment"
+        android:label="NoteListFragment"
+        tools:layout="@layout/notes_list_fragment">
+        <action
+            android:id="@+id/showNoteEditDialog"
+            app:destination="@id/noteEditDialogFragment" />
+        <action
+            android:id="@+id/showNoteDeleteDialog"
+            app:destination="@id/noteDeleteDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/noteEditDialogFragment"
+        android:name="com.example.notes.NoteEditDialogFragment"
+        android:label="NoteEditDialogFragment"
+        tools:layout="@layout/note_edit_dialog_fragment">
+        <argument
+            android:name="noteId"
+            app:argType="java.util.UUID" />
+    </dialog>
+    <dialog
+        android:id="@+id/noteDeleteDialogFragment"
+        android:name="com.example.notes.NoteDeleteDialogFragment"
+        android:label="NoteDeleteDialogFragment"
+        tools:layout="@layout/note_delete_asking_fragment">
+        <argument
+            android:name="noteId"
+            app:argType="java.util.UUID"/>
+        <action
+            android:id="@+id/showNoteListFragment"
+            app:destination="@id/noteListFragment" />
+    </dialog>
+</navigation>
