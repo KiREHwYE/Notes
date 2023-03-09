@@ -36,6 +36,7 @@ class NoteListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = NotesListFragmentBinding.inflate(inflater, container, false)
+        binding.noteList.setHasFixedSize(true)
         binding.noteList.layoutManager = LinearLayoutManager(context)
 
         binding.addButton.setOnClickListener {
