@@ -11,8 +11,7 @@ import com.example.notes.databinding.NoteItemBinding
 
 class NoteItemAdapter(private val noteItemList: List<NoteItem>): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder>() {
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemViewHolder {
+ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemViewHolder {
         val binding = NoteItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
         return NoteItemViewHolder(binding)
     }
@@ -63,18 +62,4 @@ class NoteItemAdapter(private val noteItemList: List<NoteItem>): RecyclerView.Ad
         }
 
     }
-
-    private val differCallback = object  : DiffUtil.ItemCallback<NoteItem>(){
-        override fun areItemsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
-            return oldItem == newItem
-        }
-
-    }
-
-    val differ = AsyncListDiffer(this, differCallback)
-
 }
