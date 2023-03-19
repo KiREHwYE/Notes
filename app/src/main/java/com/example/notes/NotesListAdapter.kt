@@ -17,10 +17,12 @@ class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder
 
 //    private var noteItemList: List<NoteItem> = emptyList()
 //    set(newList){
-//        val diffCallBack = NotesDiffCallBack(field, newList)
-//        val diffResult = DiffUtil.calculateDiff(diffCallBack)
-//        field = newList
-//        diffResult.dispatchUpdatesTo(this)
+////        field = newList
+////        notifyDataSetChanged()
+////        val diffCallBack = NotesDiffCallBack(field, newList)
+////        val diffResult = DiffUtil.calculateDiff(diffCallBack)
+////        field = newList
+////        diffResult.dispatchUpdatesTo(this)
 //    }
  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemViewHolder {
         val binding = NoteItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
@@ -28,10 +30,15 @@ class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder
     }
 
     override fun onBindViewHolder(holder: NoteItemViewHolder, position: Int) {
+//        holder.bind(noteItemList[position])
+
         holder.bind(differ.currentList[position])
         holder.setIsRecyclable(false)
     }
-    override fun getItemCount(): Int = differ.currentList.size
+    override fun getItemCount(): Int {
+//        return noteItemList.size
+        return differ.currentList.size
+    }
 //    fun setData(noteList : List<NoteItem>){
 //        noteItemList = noteList
 //    }

@@ -60,6 +60,7 @@ class NoteListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
                 noteItemListViewModel.notes.collect { notes ->
+//                    adapter.setData(notes)
                     adapter.differ.submitList(notes)
                 }
             }
