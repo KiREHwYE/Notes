@@ -3,6 +3,7 @@ package com.example.notes
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,51 +13,28 @@ import com.example.notes.model.NoteItem
 import java.util.UUID
 
 
-class NotesDiffCallBack(
-    private val oldList: List<NoteItem>,
-    private val newList: List<NoteItem>
-): DiffUtil.Callback(){
-    override fun getOldListSize(): Int = oldList.size
-    override fun getNewListSize(): Int = newList.size
-    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val oldNote = oldList[oldItemPosition]
-        val newNote = newList[newItemPosition]
-        return oldNote.id == newNote.id
-    }
-    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val oldNote = oldList[oldItemPosition]
-        val newNote = newList[newItemPosition]
-        return oldNote == newNote
-    }
-
-}
-
 class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder>() {
 
-    private var noteItemList: List<NoteItem> = emptyList()
-    set(newList){
-        val diffCallBack = NotesDiffCallBack(field, newList)
-        val diffResult = DiffUtil.calculateDiff(diffCallBack)
-        field = newList
-        diffResult.dispatchUpdatesTo(this)
-    }
+//    private var noteItemList: List<NoteItem> = emptyList()
+//    set(newList){
+//        val diffCallBack = NotesDiffCallBack(field, newList)
+//        val diffResult = DiffUtil.calculateDiff(diffCallBack)
+//        field = newList
+//        diffResult.dispatchUpdatesTo(this)
+//    }
  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemViewHolder {
         val binding = NoteItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
         return NoteItemViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NoteItemViewHolder, position: Int) {
-        val noteItem = noteItemList[position]
-        holder.bind(noteItem)
-
-
+        holder.bind(differ.currentList[position])
+        holder.setIsRecyclable(false)
     }
-    override fun getItemCount(): Int {
-        return noteItemList.size
-    }
-    fun setData(noteList : List<NoteItem>){
-        this.noteItemList = noteList
-    }
+    override fun getItemCount(): Int = differ.currentList.size
+//    fun setData(noteList : List<NoteItem>){
+//        noteItemList = noteList
+//    }
 
     inner class NoteItemViewHolder(noteItemBinding: NoteItemBinding): RecyclerView.ViewHolder(noteItemBinding.root) {
 
@@ -88,5 +66,14 @@ class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder
         }
     }
 
+    private val differCallBack = object : DiffUtil.ItemCallback<NoteItem>(){
+        override fun areItemsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
+            return oldItem.id == newItem.id
+        }
 
+        override fun areContentsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
+            return oldItem == newItem
+        }
+    }
+    val differ = AsyncListDiffer(this, differCallBack)
 }

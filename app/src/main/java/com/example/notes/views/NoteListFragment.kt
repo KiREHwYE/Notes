@@ -1,6 +1,7 @@
 package com.example.notes.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +43,6 @@ class NoteListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = NotesListFragmentBinding.inflate(inflater, container, false)
-        binding.noteList.setHasFixedSize(true)
         binding.noteList.layoutManager = LinearLayoutManager(context)
 
         binding.noteList.adapter = adapter
@@ -60,7 +60,7 @@ class NoteListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
                 noteItemListViewModel.notes.collect { notes ->
-                        adapter.setData(notes)
+                    adapter.differ.submitList(notes)
                 }
             }
         }
@@ -68,12 +68,10 @@ class NoteListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-
         _binding = null
     }
 
     private fun addNewNote(){
-
         val newNote = NoteItem(
             id= UUID.randomUUID(),
             noteTitle = "",
