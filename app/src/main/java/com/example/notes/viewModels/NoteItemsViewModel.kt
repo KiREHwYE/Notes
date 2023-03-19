@@ -1,14 +1,12 @@
-package com.example.notes
+package com.example.notes.viewModels
 
-import android.provider.ContactsContract.CommonDataKinds.Note
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.notes.model.NoteItem
+import com.example.notes.viewModels.NoteRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -40,7 +38,7 @@ class NoteItemsViewModel : ViewModel() {
         noteRepository.updateNote(note)
     }
 
-    suspend fun getNote(id: UUID): NoteItem{
+    suspend fun getNote(id: UUID): NoteItem {
         return noteRepository.getNote(id)
     }
 

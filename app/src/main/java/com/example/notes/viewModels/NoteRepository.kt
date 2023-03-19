@@ -1,8 +1,9 @@
-package com.example.notes
+package com.example.notes.viewModels
 
 import android.content.Context
 import androidx.room.Room
-import com.example.notes.database.NoteDatabase
+import com.example.notes.model.database.NoteDatabase
+import com.example.notes.model.NoteItem
 import kotlinx.coroutines.flow.Flow
 import java.util.*
 
@@ -34,7 +35,7 @@ class NoteRepository private constructor(context: Context) {
             }
         }
 
-        fun get(): NoteRepository{
+        fun get(): NoteRepository {
             return INSTANCE ?:
             throw java.lang.IllegalStateException("NoteRepository must be initialized")
         }

@@ -1,6 +1,5 @@
-package com.example.notes
+package com.example.notes.views
 
-import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -9,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.example.notes.NoteEditDialogFragmentArgs
+import com.example.notes.viewModels.NoteItemsViewModel
 import com.example.notes.databinding.NoteEditDialogFragmentBinding
 import kotlinx.coroutines.launch
-import java.util.*
 
 class NoteEditDialogFragment : DialogFragment() {
 

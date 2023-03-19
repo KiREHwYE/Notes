@@ -1,6 +1,5 @@
-package com.example.notes
+package com.example.notes.views
 
-import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,11 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.notes.NoteDeleteDialogFragmentArgs
+import com.example.notes.NoteDeleteDialogFragmentDirections
+import com.example.notes.viewModels.NoteItemsViewModel
 import com.example.notes.databinding.NoteDeleteAskingFragmentBinding
-import com.example.notes.databinding.NoteEditDialogFragmentBinding
 import kotlinx.coroutines.launch
 
 class NoteDeleteDialogFragment : DialogFragment() {
@@ -44,16 +44,16 @@ class NoteDeleteDialogFragment : DialogFragment() {
                     noteItemListViewModel.deleteNote(args.noteId)
 
                     findNavController()
-                        .navigate(NoteDeleteDialogFragmentDirections
-                            .showNoteListFragment()
+                        .navigate(
+                            NoteDeleteDialogFragmentDirections.showNoteListFragment()
                         )
                 }
             }
 
             noButton.setOnClickListener {
                 findNavController()
-                    .navigate(NoteDeleteDialogFragmentDirections
-                        .showNoteListFragment()
+                    .navigate(
+                        NoteDeleteDialogFragmentDirections.showNoteListFragment()
                     )
             }
         }

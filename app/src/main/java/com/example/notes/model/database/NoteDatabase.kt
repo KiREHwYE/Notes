@@ -1,9 +1,8 @@
-package com.example.notes.database
+package com.example.notes.model.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.example.notes.NoteItem
+import com.example.notes.model.NoteItem
 
 @Database(entities = [NoteItem::class], version = 2, exportSchema = true)
 abstract class NoteDatabase : RoomDatabase() {

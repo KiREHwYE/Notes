@@ -1,13 +1,8 @@
-package com.example.notes
+package com.example.notes.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.notes.databinding.ActivityMainBinding
+import com.example.notes.R
 
 class MainActivity : AppCompatActivity() {
 

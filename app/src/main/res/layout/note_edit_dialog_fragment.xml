@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/note_edit_dialog"
     android:background="#00000000"
-    tools:context=".NoteEditDialogFragment">
+    tools:context=".views.NoteEditDialogFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="280dp"
