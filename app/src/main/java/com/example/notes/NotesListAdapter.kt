@@ -3,20 +3,42 @@ package com.example.notes
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notes.databinding.NoteItemBinding
+import com.example.notes.views.NoteListFragmentDirections
 import com.example.notes.model.NoteItem
 import java.util.UUID
 
 
-class NoteItemAdapter(
+class NotesDiffCallBack(
+    private val oldList: List<NoteItem>,
+    private val newList: List<NoteItem>
+): DiffUtil.Callback(){
+    override fun getOldListSize(): Int = oldList.size
+    override fun getNewListSize(): Int = newList.size
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldNote = oldList[oldItemPosition]
+        val newNote = newList[newItemPosition]
+        return oldNote.id == newNote.id
+    }
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldNote = oldList[oldItemPosition]
+        val newNote = newList[newItemPosition]
+        return oldNote == newNote
+    }
 
-    ): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder>() {
+}
+
+class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder>() {
 
     private var noteItemList: List<NoteItem> = emptyList()
     set(newList){
+        val diffCallBack = NotesDiffCallBack(field, newList)
+        val diffResult = DiffUtil.calculateDiff(diffCallBack)
         field = newList
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemViewHolder {
         val binding = NoteItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
@@ -65,4 +87,6 @@ class NoteItemAdapter(
             }
         }
     }
+
+
 }

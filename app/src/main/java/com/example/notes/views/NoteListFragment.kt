@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.notes.model.NoteItem
 import com.example.notes.NoteItemAdapter
 import com.example.notes.viewModels.NoteItemsViewModel
-import com.example.notes.NoteListFragmentDirections
+import com.example.notes.views.NoteListFragmentDirections
 import com.example.notes.databinding.NotesListFragmentBinding
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
@@ -72,8 +72,6 @@ class NoteListFragment : Fragment() {
         _binding = null
     }
 
-    suspend fun <T> Flow<List<T>>.flattenToList() =
-        flatMapConcat { it.asFlow() }.toList()
     private fun addNewNote(){
 
         val newNote = NoteItem(

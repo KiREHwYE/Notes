@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import com.example.notes.NoteEditDialogFragmentArgs
+import com.example.notes.views.NoteEditDialogFragmentArgs
 import com.example.notes.viewModels.NoteItemsViewModel
 import com.example.notes.databinding.NoteEditDialogFragmentBinding
 import kotlinx.coroutines.launch

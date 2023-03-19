@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.notes.NoteDeleteDialogFragmentArgs
-import com.example.notes.NoteDeleteDialogFragmentDirections
+import com.example.notes.views.NoteDeleteDialogFragmentArgs
+import com.example.notes.views.NoteDeleteDialogFragmentDirections
 import com.example.notes.viewModels.NoteItemsViewModel
 import com.example.notes.databinding.NoteDeleteAskingFragmentBinding
 import kotlinx.coroutines.launch
