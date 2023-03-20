@@ -86,7 +86,7 @@ class NoteEditDialogFragment : DialogFragment() {
                 viewLifecycleOwner.lifecycleScope.launch {
 
                     if (args.noteId == null){
-                        _note = note.copy(noteTitle = text.toString())
+                        _note = note.copy(noteText = text.toString())
                     }
                     else {
                         if (noteItemsViewModel.getNote(args.noteId!!).noteText != text.toString()) {
