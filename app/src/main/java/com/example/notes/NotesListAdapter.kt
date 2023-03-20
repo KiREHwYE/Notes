@@ -97,9 +97,7 @@ class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder
                         dialog.dismiss()
                     }
 
-
                     dialog.show()
-
 
                     return@setOnLongClickListener true
                 }
