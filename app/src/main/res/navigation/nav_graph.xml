@@ -24,7 +24,9 @@
         tools:layout="@layout/note_edit_dialog_fragment">
         <argument
             android:name="noteId"
-            app:argType="java.util.UUID" />
+            app:argType="java.util.UUID"
+            app:nullable="true"
+            android:defaultValue="@null"/>
     </dialog>
     <dialog
         android:id="@+id/noteDeleteDialogFragment"

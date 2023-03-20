@@ -45,6 +45,8 @@ class NoteListFragment : Fragment() {
         _binding = NotesListFragmentBinding.inflate(inflater, container, false)
         binding.noteList.layoutManager = LinearLayoutManager(context)
 
+        binding.noteList.itemAnimator = null
+
         binding.noteList.adapter = adapter
 
         binding.addButton.setOnClickListener {
@@ -69,24 +71,15 @@ class NoteListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        Log.d("ABRA", "DESTROY")
         _binding = null
     }
 
     private fun addNewNote(){
-        val newNote = NoteItem(
-            id= UUID.randomUUID(),
-            noteTitle = "",
-            noteText = ""
-        )
-
-        viewLifecycleOwner.lifecycleScope.launch{
-            noteItemListViewModel.addNote(newNote)
-        }
-
         try {
             findNavController()
                 .navigate(
-                    NoteListFragmentDirections.showNoteEditDialog(newNote.id)
+                    NoteListFragmentDirections.showNoteEditDialog()
                 )
         } catch (exception: java.lang.Exception){}
     }

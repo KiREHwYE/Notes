@@ -15,16 +15,6 @@ import java.util.UUID
 
 class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder>() {
 
-//    private var noteItemList: List<NoteItem> = emptyList()
-//    set(newList){
-////        field = newList
-////        notifyDataSetChanged()
-////        val diffCallBack = NotesDiffCallBack(field, newList)
-////        val diffResult = DiffUtil.calculateDiff(diffCallBack)
-////        field = newList
-////        diffResult.dispatchUpdatesTo(this)
-//    }
-
     private val differCallBack = object : DiffUtil.ItemCallback<NoteItem>(){
         override fun areItemsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
             return oldItem.id == newItem.id
@@ -42,18 +32,12 @@ class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder
     }
 
     override fun onBindViewHolder(holder: NoteItemViewHolder, position: Int) {
-//        holder.bind(noteItemList[position])
-
         holder.bind(differ.currentList[position])
         holder.setIsRecyclable(false)
     }
     override fun getItemCount(): Int {
-//        return noteItemList.size
         return differ.currentList.size
     }
-//    fun setData(noteList : List<NoteItem>){
-//        noteItemList = noteList
-//    }
 
     inner class NoteItemViewHolder(noteItemBinding: NoteItemBinding): RecyclerView.ViewHolder(noteItemBinding.root) {
 
