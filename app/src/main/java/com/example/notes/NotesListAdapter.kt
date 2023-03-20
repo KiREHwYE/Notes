@@ -1,7 +1,14 @@
 package com.example.notes
 
+import android.app.AlertDialog
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -10,6 +17,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notes.databinding.NoteItemBinding
 import com.example.notes.views.NoteListFragmentDirections
 import com.example.notes.model.NoteItem
+import com.example.notes.viewModels.NoteItemsViewModel
+import com.example.notes.viewModels.NoteRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import java.util.UUID
 
 
@@ -25,6 +38,10 @@ class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder
         }
     }
     val differ = AsyncListDiffer(this, differCallBack)
+
+    var context : Context ?= null
+
+    private val noteRepository = NoteRepository.get()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemViewHolder {
         val binding = NoteItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
@@ -59,10 +76,31 @@ class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder
                 }
 
                 root.setOnLongClickListener { view ->
-                    view.findNavController()
-                        .navigate(NoteListFragmentDirections
-                            .showNoteDeleteDialog(noteItem.id)
-                        )
+                    val builder = AlertDialog.Builder(context)
+                    val customView = LayoutInflater.from(context).inflate(R.layout.note_delete_asking_fragment, null)
+                    builder.setView(customView)
+
+                    val yesButton = customView.findViewById<Button>(R.id.yes_button)
+                    val noButton = customView.findViewById<Button>(R.id.no_button)
+
+                    val dialog = builder.create()
+                    dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+                    yesButton.setOnClickListener {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            noteRepository.deleteNote(noteItem.id)
+                            dialog.dismiss()
+                        }
+                    }
+
+                    noButton.setOnClickListener {
+                        dialog.dismiss()
+                    }
+
+
+                    dialog.show()
+
+
                     return@setOnLongClickListener true
                 }
             }

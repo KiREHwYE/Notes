@@ -1,5 +1,6 @@
 package com.example.notes.views
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -37,6 +38,7 @@ class NoteListFragment : Fragment() {
 
     private val adapter : NoteItemAdapter by lazy { NoteItemAdapter() }
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,6 +49,7 @@ class NoteListFragment : Fragment() {
 
         binding.noteList.itemAnimator = null
 
+        adapter.context = this.context
         binding.noteList.adapter = adapter
 
         binding.addButton.setOnClickListener {
