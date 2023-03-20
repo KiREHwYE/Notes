@@ -24,7 +24,19 @@ class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder
 ////        field = newList
 ////        diffResult.dispatchUpdatesTo(this)
 //    }
- override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemViewHolder {
+
+    private val differCallBack = object : DiffUtil.ItemCallback<NoteItem>(){
+        override fun areItemsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
+            return oldItem == newItem
+        }
+    }
+    val differ = AsyncListDiffer(this, differCallBack)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemViewHolder {
         val binding = NoteItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
         return NoteItemViewHolder(binding)
     }
@@ -72,15 +84,4 @@ class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder
             }
         }
     }
-
-    private val differCallBack = object : DiffUtil.ItemCallback<NoteItem>(){
-        override fun areItemsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: NoteItem, newItem: NoteItem): Boolean {
-            return oldItem == newItem
-        }
-    }
-    val differ = AsyncListDiffer(this, differCallBack)
 }
