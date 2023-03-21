@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.notes'
+    namespace 'com.kire.notes'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.notes"
+        applicationId "com.kire.notes"
         minSdk 24
         targetSdk 33
         versionCode 1

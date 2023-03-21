@@ -1,8 +1,8 @@
-package com.example.notes.views
+package com.kire.notes.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.notes.R
+import com.kire.notes.R
 
 class MainActivity : AppCompatActivity() {
 

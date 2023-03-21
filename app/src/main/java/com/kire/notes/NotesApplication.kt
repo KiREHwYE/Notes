@@ -1,7 +1,7 @@
-package com.example.notes
+package com.kire.notes
 
 import android.app.Application
-import com.example.notes.viewModels.NoteRepository
+import com.kire.notes.viewModels.NoteRepository
 
 class NotesApplication : Application() {
 

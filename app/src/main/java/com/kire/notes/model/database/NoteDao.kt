@@ -1,7 +1,7 @@
-package com.example.notes.model.database
+package com.kire.notes.model.database
 
 import androidx.room.*
-import com.example.notes.model.NoteItem
+import com.kire.notes.model.NoteItem
 import kotlinx.coroutines.flow.Flow
 import java.util.*
 

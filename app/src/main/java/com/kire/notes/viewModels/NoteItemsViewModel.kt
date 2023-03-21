@@ -1,9 +1,8 @@
-package com.example.notes.viewModels
+package com.kire.notes.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.notes.model.NoteItem
-import com.example.notes.viewModels.NoteRepository
+import com.kire.notes.model.NoteItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -1,4 +1,4 @@
-package com.example.notes
+package com.kire.notes
 
 import org.junit.Test
 

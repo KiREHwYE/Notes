@@ -1,8 +1,6 @@
-package com.example.notes.views
+package com.kire.notes.views
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,15 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.notes.model.NoteItem
-import com.example.notes.NoteItemAdapter
-import com.example.notes.viewModels.NoteItemsViewModel
-import com.example.notes.views.NoteListFragmentDirections
-import com.example.notes.databinding.NotesListFragmentBinding
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.flatMapConcat
-import kotlinx.coroutines.flow.toList
+import com.kire.notes.NoteItemAdapter
+import com.kire.notes.viewModels.NoteItemsViewModel
+import com.kire.notes.databinding.NotesListFragmentBinding
 import kotlinx.coroutines.launch
 import java.util.*
 

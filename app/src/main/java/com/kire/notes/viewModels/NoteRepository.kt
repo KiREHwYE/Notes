@@ -1,9 +1,9 @@
-package com.example.notes.viewModels
+package com.kire.notes.viewModels
 
 import android.content.Context
 import androidx.room.Room
-import com.example.notes.model.database.NoteDatabase
-import com.example.notes.model.NoteItem
+import com.kire.notes.model.database.NoteDatabase
+import com.kire.notes.model.NoteItem
 import kotlinx.coroutines.flow.Flow
 import java.util.*
 

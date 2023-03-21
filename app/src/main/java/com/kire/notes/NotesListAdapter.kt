@@ -1,29 +1,23 @@
-package com.example.notes
+package com.kire.notes
 
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.notes.databinding.NoteItemBinding
-import com.example.notes.views.NoteListFragmentDirections
-import com.example.notes.model.NoteItem
-import com.example.notes.viewModels.NoteItemsViewModel
-import com.example.notes.viewModels.NoteRepository
+import com.kire.notes.databinding.NoteItemBinding
+import com.kire.notes.views.NoteListFragmentDirections
+import com.kire.notes.model.NoteItem
+import com.kire.notes.viewModels.NoteRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import java.util.UUID
 
 
 class NoteItemAdapter(): RecyclerView.Adapter<NoteItemAdapter.NoteItemViewHolder>() {
