@@ -9,8 +9,8 @@
     tools:context=".views.NoteEditDialogFragment">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="280dp"
-        android:layout_height="430dp"
+        android:layout_width="500dp"
+        android:layout_height="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,3 +44,4 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+

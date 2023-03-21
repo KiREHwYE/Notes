@@ -104,7 +104,7 @@ class NoteEditDialogFragment : DialogFragment() {
     override fun onPause() {
         super.onPause()
 
-        if (note.noteTitle != "" || note.noteText != ""){
+        if (!(note.noteTitle.isEmpty() && note.noteText.isEmpty())){
             viewLifecycleOwner.lifecycleScope.launch {
                 noteItemsViewModel.addNote(note)
             }

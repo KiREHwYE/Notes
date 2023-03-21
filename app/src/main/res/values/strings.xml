@@ -2,6 +2,7 @@
     <string name="app_name">Notes</string>
     <string name="title">Title</string>
     <string name="item_hint">Create a note</string>
+    <string name="edit_hint">Text</string>
     <string name="new_note">New Note</string>
     <string name="delete_confidence">Are you sure?</string>
     <string name="delete_explanation">Deleted note cannot be restored</string>
