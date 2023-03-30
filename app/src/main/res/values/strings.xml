@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Notes</string>
+    <string name="app_name">NoteStore</string>
     <string name="title">Title</string>
     <string name="item_hint">Create a note</string>
     <string name="edit_hint">Text</string>
